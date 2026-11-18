@@ -1,0 +1,12 @@
+# generated-by: gemini-ultra
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+dist/
+build/
+.DS_Store
+*.sqlite
+*.db
+*.zim
+tmp/

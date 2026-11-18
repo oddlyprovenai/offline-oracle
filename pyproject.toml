@@ -1,0 +1,27 @@
+# generated-by: gemini-ultra
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "oddly-offline-oracle"
+version = "0.1.0"
+description = "100% offline research assistant over OpenZIM (Wikipedia/StackExchange) archives with bounded-RAM SQLite FTS5 + SimHash hybrid search and verbatim span-verified citations."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "Apache-2.0"
+authors = [
+  { name = "Oddly Proven", email = "noreply@oddlyproven.local" }
+]
+dependencies = []
+
+[project.scripts]
+oracle = "offline_oracle.cli:main"
+offline-oracle = "offline_oracle.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

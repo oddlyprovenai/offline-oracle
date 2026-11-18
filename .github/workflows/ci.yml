@@ -1,0 +1,31 @@
+# generated-by: gemini-ultra
+name: Offline Oracle CI
+
+on:
+  push:
+    branches: ["main", "gemini/**"]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install pytest (test runner only; zero runtime dependencies)
+        run: python -m pip install pytest
+
+      - name: Run unit & integration suite
+        run: PYTHONPATH=src python -m pytest -v
+
+      - name: Run bounded-RAM benchmark receipt
+        run: PYTHONPATH=src python -m offline_oracle.cli bench
